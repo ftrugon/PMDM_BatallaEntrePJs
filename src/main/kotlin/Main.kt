@@ -1,16 +1,46 @@
 package org.example
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+fun main() {
+
+
+    /*
+    val random1 = Random.nextInt(5,50)
+    val random2 = Random.nextInt(5,50)
+
+    println(random1)
+    println(random2)
+*/
+    val characters = listOf<Personaje>(
+        Personaje("Fran"),
+        Personaje("Paco")
+    )
+
+    val first = characters.random()
+
+    val second : Personaje
+
+
+    if (first == characters[0]){
+        second = characters[1]
+    }else {
+        second = characters[0]
+    }
+
+    var turn = 1
+
+    while (!first.hasDied() && !second.hasDied()){
+        println("Turno $turn !!!!")
+
+        println(" ${first.nombre} ataca hace ${first.attack(second)} de daño")
+        println(" ${second.nombre} ataca hace ${second.attack(first)} de daño")
+
+        println(" A ${first.nombre} le quedan ${first.vidaActual} puntos de vida y a ${second.nombre} le quedan ${second.vidaActual}")
+
+
+
+        println(first.dieCase() + second.dieCase())
+
+        turn++
     }
 }
